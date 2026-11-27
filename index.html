@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A hands-on playground for learning the Strategy design pattern in TypeScript."
+    />
+    <title>Strategy Pattern Playground</title>
+    <link rel="icon" href="/logo.png" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Strategy Pattern Playground</h1>
+      <p>
+        Each card keeps <strong>one</strong> Context. Picking another strategy calls
+        <code>context.setStrategy()</code>, and the same input is recalculated with the new
+        algorithm, with no <code>if</code> or <code>switch</code> involved.
+      </p>
+    </header>
+
+    <main id="app" class="card-grid" aria-label="Strategy examples"></main>
+
+    <footer class="page-footer">
+      <p>
+        Read <code>docs/concepts.md</code> to learn the pattern, then try
+        <code>docs/exercises.md</code>.
+      </p>
+    </footer>
+
+    <noscript>This playground needs JavaScript to run.</noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
