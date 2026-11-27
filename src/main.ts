@@ -1,26 +1,26 @@
 // Imports de Pagos
-import { PaymentContext } from './payment/core/payment.context';
-import { CardStrategy } from './payment/strategies/card.strategy';
-import { NequiStrategy } from './payment/strategies/nequi.strategy';
-import { PaypalStrategy } from './payment/strategies/paypal.strategy';
+import { PaymentContext } from './domains/payment/core/payment.context';
+import { CardStrategy } from './domains/payment/strategies/card.strategy';
+import { NequiStrategy } from './domains/payment/strategies/nequi.strategy';
+import { PaypalStrategy } from './domains/payment/strategies/paypal.strategy';
 
 // Imports de Aprendizaje
-import { LearningContext } from './learning/core/learning.context';
-import { VideoStrategy } from './learning/strategies/video.strategy';
-import { ReadingStrategy } from './learning/strategies/reading.strategy';
-import { PracticeStrategy } from './learning/strategies/practice.strategy';
+import { LearningContext } from './domains/learning/core/learning.context';
+import { VideoStrategy } from './domains/learning/strategies/video.strategy';
+import { ReadingStrategy } from './domains/learning/strategies/reading.strategy';
+import { PracticeStrategy } from './domains/learning/strategies/practice.strategy';
 
 // Imports de Gaming
-import { GameContext } from './gaming/core/gaming.context';
-import { EasyStrategy } from './gaming/strategies/easy.strategy';
-import { MediumStrategy } from './gaming/strategies/medium.strategy';
-import { HardStrategy } from './gaming/strategies/hard.strategy';
+import { GameContext } from './domains/gaming/core/gaming.context';
+import { EasyStrategy } from './domains/gaming/strategies/easy.strategy';
+import { MediumStrategy } from './domains/gaming/strategies/medium.strategy';
+import { HardStrategy } from './domains/gaming/strategies/hard.strategy';
 
-// Imports de Healtcare
-import { TreatmentContext } from './healtcare/core/treatment.context';
-import { MedicationStrategy } from './healtcare/strategy/medication.strategy';
-import { SurgeryStrategy } from './healtcare/strategy/surgery.strategy';
-import { TherapyStrategy } from './healtcare/strategy/therapy.strategy';
+// Imports de Healthcare
+import { TreatmentContext } from './domains/healthcare/core/treatment.context';
+import { MedicationStrategy } from './domains/healthcare/strategies/medication.strategy';
+import { SurgeryStrategy } from './domains/healthcare/strategies/surgery.strategy';
+import { TherapyStrategy } from './domains/healthcare/strategies/therapy.strategy';
 
 // --- Lógica de Pagos ---
 document.getElementById('btnPay')?.addEventListener('click', () => {
@@ -64,7 +64,7 @@ document.getElementById('btnGame')?.addEventListener('click', () => {
   if (output) output.innerText = ctx.execute(name);
 });
 
-// --- Lógica de Healtcare ---
+// --- Lógica de Healthcare ---
 document.getElementById('btnMedicine')?.addEventListener('click', () => {
   const name = (document.getElementById('patientName') as HTMLInputElement).value;
   const strategyType = (document.getElementById('trearmentStrategy') as HTMLSelectElement).value;
