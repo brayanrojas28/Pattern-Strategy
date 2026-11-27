@@ -1,43 +1,43 @@
-# Patrón de diseño Strategy (TypeScript)
+# Strategy Design Pattern (TypeScript)
 
-Ejemplos prácticos del patrón **Strategy** hechos con TypeScript y Vite, sin frameworks. Es un proyecto pensado para aprender: cada ejemplo es pequeño y se puede leer en pocos minutos.
+Hands-on examples of the **Strategy** design pattern built with TypeScript and Vite, with no frameworks. Each example is small and can be read in a few minutes, so it works well for learning.
 
-## ¿Qué es el patrón Strategy?
+## What is the Strategy pattern?
 
-Es un patrón de comportamiento que permite definir una familia de algoritmos, poner cada uno en su propia clase y hacerlos **intercambiables** en tiempo de ejecución. Así evitas llenar tu código de `if / else` o `switch` cada vez que aparece una nueva variante.
+Strategy is a behavioral design pattern that lets you define a family of algorithms, put each one in its own class, and make them **interchangeable** at runtime. This keeps your code free of long `if / else` or `switch` chains every time a new variant appears.
 
-Tiene tres piezas:
+It has three parts:
 
-| Pieza | Qué hace | Ejemplo en este repo |
+| Part | What it does | Example in this repo |
 |---|---|---|
-| **Strategy** (interfaz) | Define el contrato que cumplen todos los algoritmos | `IPaymentStrategy` |
-| **Estrategias concretas** | Cada una implementa el algoritmo a su manera | `CardStrategy`, `NequiStrategy`, `PaypalStrategy` |
-| **Context** | Guarda la estrategia actual y delega el trabajo en ella | `PaymentContext` |
+| **Strategy** (interface) | Defines the contract every algorithm follows | `IPaymentStrategy` |
+| **Concrete strategies** | Each one implements the algorithm its own way | `CardStrategy`, `NequiStrategy`, `PaypalStrategy` |
+| **Context** | Holds the current strategy and delegates the work to it | `PaymentContext` |
 
 ```ts
-const contexto = new PaymentContext(new NequiStrategy());
-contexto.execute(50000);                 // "Pagando $50000 con Nequi"
+const context = new PaymentContext(new NequiStrategy());
+context.execute(50000);                  // "Pagando $50000 con Nequi"
 
-contexto.setStrategy(new CardStrategy()); // cambio de algoritmo en ejecución
-contexto.execute(50000);                 // "Pagando $50000 con Tarjeta"
+context.setStrategy(new CardStrategy()); // swap the algorithm at runtime
+context.execute(50000);                  // "Pagando $50000 con Tarjeta"
 ```
 
-Para agregar un nuevo método de pago solo creas una clase nueva que implemente la interfaz; no tocas el contexto ni las demás estrategias.
+To add a new payment method, you only create a new class that implements the interface. The context and the other strategies stay untouched.
 
-## Ejemplos incluidos
+## Included examples
 
-Cada dominio vive en `front/mi-frontend/src/<dominio>/` con la misma estructura: `core/` (interfaz + contexto) y `strategies/` (implementaciones).
+Each domain lives in `front/mi-frontend/src/<domain>/` with the same structure: `core/` (interface + context) and `strategies/` (implementations).
 
-- **payment**: pagos con tarjeta, Nequi o PayPal.
-- **learning**: aprender un tema con video, lectura o práctica.
-- **gaming**: niveles de dificultad fácil, medio o difícil.
-- **healtcare**: tratamiento con medicación, cirugía o terapia.
+- **payment**: pay with card, Nequi or PayPal.
+- **learning**: study a topic through video, reading or practice.
+- **gaming**: easy, medium or hard difficulty levels.
+- **healtcare**: treatment through medication, surgery or therapy.
 
-`main.ts` conecta cada ejemplo con la interfaz de `index.html`.
+`main.ts` connects each example to the UI in `index.html`.
 
-## Cómo ejecutarlo
+## How to run it
 
-Necesitas [Node.js](https://nodejs.org/) instalado.
+You need [Node.js](https://nodejs.org/) installed.
 
 ```bash
 cd front/mi-frontend
@@ -45,14 +45,14 @@ npm install
 npm run dev
 ```
 
-Luego abre la dirección que muestra la terminal (normalmente `http://localhost:5173`).
+Then open the address shown in the terminal (usually `http://localhost:5173`).
 
-Para generar la versión de producción: `npm run build`.
+To create a production build: `npm run build`.
 
-## Tecnologías
+## Tech stack
 
-TypeScript · Vite · HTML y CSS
+TypeScript · Vite · HTML & CSS
 
-## Autor
+## Author
 
 Brayan Rojas, Medellín, Colombia.
