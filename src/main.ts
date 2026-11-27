@@ -1,43 +1,20 @@
-import { Context } from './shared/context';
-import type { StrategyRegistry } from './shared/strategy-registry';
-import { createGamingRegistry } from './domains/gaming/gaming.registry';
-import { createHealthcareRegistry } from './domains/healthcare/healthcare.registry';
-import { createLearningRegistry } from './domains/learning/learning.registry';
-import { createPaymentRegistry } from './domains/payment/payment.registry';
+import './style.css';
+import {
+  gamingCard,
+  healthcareCard,
+  learningCard,
+  paymentCard,
+  pricingCard,
+  sortingCard,
+} from './ui/cards';
+import { mountStrategyCard } from './ui/strategy-card';
 
-function wireCard<TOutput>(
-  ids: { input: string; select: string; button: string; result: string },
-  registry: StrategyRegistry<number, TOutput>,
-): void {
-  const input = document.getElementById(ids.input) as HTMLInputElement;
-  const select = document.getElementById(ids.select) as HTMLSelectElement;
-  const output = document.getElementById(ids.result) as HTMLElement;
-  const context = new Context(registry.get(select.value));
+const app = document.getElementById('app');
+if (!app) throw new Error('Missing <main id="app"> in index.html.');
 
-  select.addEventListener('change', () => context.setStrategy(registry.get(select.value)));
-  document.getElementById(ids.button)?.addEventListener('click', () => {
-    output.innerText = JSON.stringify(context.execute(Number(input.value)));
-  });
-}
-
-wireCard(
-  { input: 'payAmount', select: 'payStrategy', button: 'btnPay', result: 'payResult' },
-  createPaymentRegistry(),
-);
-wireCard(
-  { input: 'learnLessons', select: 'learnStrategy', button: 'btnLearn', result: 'learnResult' },
-  createLearningRegistry(),
-);
-wireCard(
-  { input: 'gameLevel', select: 'gameStrategy', button: 'btnGame', result: 'gameResult' },
-  createGamingRegistry(),
-);
-wireCard(
-  {
-    input: 'severity',
-    select: 'treatmentStrategy',
-    button: 'btnMedicine',
-    result: 'treatmentResult',
-  },
-  createHealthcareRegistry(),
-);
+mountStrategyCard(app, paymentCard);
+mountStrategyCard(app, pricingCard);
+mountStrategyCard(app, sortingCard);
+mountStrategyCard(app, learningCard);
+mountStrategyCard(app, gamingCard);
+mountStrategyCard(app, healthcareCard);
