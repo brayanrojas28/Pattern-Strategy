@@ -8,18 +8,18 @@ Strategy is a behavioral design pattern that lets you define a family of algorit
 
 It has three parts:
 
-| Part | What it does | Example in this repo |
-|---|---|---|
-| **Strategy** (interface) | Defines the contract every algorithm follows | `IPaymentStrategy` |
-| **Concrete strategies** | Each one implements the algorithm its own way | `CardStrategy`, `NequiStrategy`, `PaypalStrategy` |
-| **Context** | Holds the current strategy and delegates the work to it | `PaymentContext` |
+| Part                     | What it does                                            | Example in this repo                              |
+| ------------------------ | ------------------------------------------------------- | ------------------------------------------------- |
+| **Strategy** (interface) | Defines the contract every algorithm follows            | `IPaymentStrategy`                                |
+| **Concrete strategies**  | Each one implements the algorithm its own way           | `CardStrategy`, `NequiStrategy`, `PaypalStrategy` |
+| **Context**              | Holds the current strategy and delegates the work to it | `PaymentContext`                                  |
 
 ```ts
 const context = new PaymentContext(new NequiStrategy());
-context.execute(50000);                  // "Pagando $50000 con Nequi"
+context.execute(50000); // "Pagando $50000 con Nequi"
 
 context.setStrategy(new CardStrategy()); // swap the algorithm at runtime
-context.execute(50000);                  // "Pagando $50000 con Tarjeta"
+context.execute(50000); // "Pagando $50000 con Tarjeta"
 ```
 
 To add a new payment method, you only create a new class that implements the interface. The context and the other strategies stay untouched.

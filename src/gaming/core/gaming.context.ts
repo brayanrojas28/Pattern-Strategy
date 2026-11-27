@@ -1,4 +1,4 @@
-import type { IDifficultyStrategy } from "./gaming.strategy";
+import type { IDifficultyStrategy } from './gaming.strategy';
 
 export class GameContext {
   private strategy: IDifficultyStrategy;

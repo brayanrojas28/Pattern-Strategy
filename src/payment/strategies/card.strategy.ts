@@ -1,4 +1,4 @@
-import type { IPaymentStrategy } from "../core/payment.strategy";
+import type { IPaymentStrategy } from '../core/payment.strategy';
 
 export class CardStrategy implements IPaymentStrategy {
   pay(amount: number): string {

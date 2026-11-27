@@ -1,4 +1,4 @@
-import type { ILearningStrategy } from "./learning.strategy";
+import type { ILearningStrategy } from './learning.strategy';
 
 export class LearningContext {
   private strategy: ILearningStrategy;

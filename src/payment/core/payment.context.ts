@@ -1,4 +1,4 @@
-import type { IPaymentStrategy } from "./payment.strategy";
+import type { IPaymentStrategy } from './payment.strategy';
 
 export class PaymentContext {
   private strategy: IPaymentStrategy;
