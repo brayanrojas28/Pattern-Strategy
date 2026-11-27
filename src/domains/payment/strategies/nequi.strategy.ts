@@ -1,7 +1,11 @@
-import type { IPaymentStrategy } from '../core/payment.strategy';
+import { roundToCents } from '../../../shared/money';
+import type { PaymentResult, PaymentStrategy } from '../payment.types';
 
-export class NequiStrategy implements IPaymentStrategy {
-  pay(amount: number): string {
-    return `Pagando $${amount} con Nequi`;
+/** ROLE: Concrete Strategy. Nequi (a Colombian digital wallet) charges no fee. */
+export class NequiStrategy implements PaymentStrategy {
+  readonly label = 'Nequi';
+
+  execute(amount: number): PaymentResult {
+    return { fee: 0, total: roundToCents(amount) };
   }
 }

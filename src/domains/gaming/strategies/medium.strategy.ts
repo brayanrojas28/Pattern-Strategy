@@ -1,7 +1,11 @@
-import type { IDifficultyStrategy } from '../core/gaming.strategy';
+import { scaleEnemyStats } from '../enemy-stats';
+import type { GamingResult, GamingStrategy } from '../gaming.types';
 
-export class MediumStrategy implements IDifficultyStrategy {
-  play(player: string): string {
-    return `El jugador ${player} escogio la dificultad media.`;
+/** ROLE: Concrete Strategy. The game as designed: base stats, no changes. */
+export class MediumStrategy implements GamingStrategy {
+  readonly label = 'Medium';
+
+  execute(level: number): GamingResult {
+    return scaleEnemyStats(level, { health: 1, damage: 1, reward: 1 });
   }
 }

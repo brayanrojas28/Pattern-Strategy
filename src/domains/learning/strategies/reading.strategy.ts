@@ -1,7 +1,16 @@
-import type { ILearningStrategy } from '../core/learning.strategy';
+import type { LearningResult, LearningStrategy } from '../learning.types';
 
-export class ReadingStrategy implements ILearningStrategy {
-  learn(material: string): string {
-    return `Aprendiendo ${material} mediante documentos.`;
+/** ROLE: Concrete Strategy. Slower than video, and you remember a bit more. */
+export class ReadingStrategy implements LearningStrategy {
+  readonly label = 'Reading';
+
+  private readonly hoursPerLesson = 1.25;
+  private readonly retentionScore = 55;
+
+  execute(lessons: number): LearningResult {
+    return {
+      estimatedHours: lessons * this.hoursPerLesson,
+      retentionScore: this.retentionScore,
+    };
   }
 }

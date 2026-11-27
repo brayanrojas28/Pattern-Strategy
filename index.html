@@ -81,7 +81,7 @@
 
       <div class="card">
         <h3>📚 Learning</h3>
-        <input type="text" id="learnTopic" placeholder="Tema a Estudiar" />
+        <input type="number" id="learnLessons" placeholder="Tema a Estudiar" />
         <select id="learnStrategy">
           <option value="video">Video</option>
           <option value="reading">Lectura</option>
@@ -93,7 +93,7 @@
 
       <div class="card">
         <h3>🎮 Gaming</h3>
-        <input type="text" id="playerName" placeholder="Nombre del Jugador" />
+        <input type="number" id="gameLevel" placeholder="Nombre del Jugador" />
         <select id="gameStrategy">
           <option value="easy">Fácil</option>
           <option value="medium">Medio</option>
@@ -105,14 +105,14 @@
 
       <div class="card">
         <h3>🏥 Healthcare</h3>
-        <input type="text" id="patientName" placeholder="Nombre del Paciente" />
-        <select id="trearmentStrategy">
+        <input type="number" id="severity" placeholder="Nombre del Paciente" />
+        <select id="treatmentStrategy">
           <option value="medication">Medicamentos</option>
           <option value="surgery">Cirugía</option>
           <option value="therapy">Terapia</option>
         </select>
         <button id="btnMedicine">Aplicar Tratamiento</button>
-        <div id="treatmenResult" class="result">Esperando...</div>
+        <div id="treatmentResult" class="result">Esperando...</div>
       </div>
     </div>
 

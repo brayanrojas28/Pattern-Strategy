@@ -15,6 +15,12 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
+      // Allows `interface PaymentStrategy extends Strategy<number, PaymentResult> {}`:
+      // a named domain interface that adds nothing new is fine here.
+      '@typescript-eslint/no-empty-object-type': [
+        'error',
+        { allowInterfaces: 'with-single-extends' },
+      ],
     },
   },
   // Must stay last: turns off rules that would fight with Prettier.
